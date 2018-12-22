@@ -2,7 +2,7 @@ import folium as fl
 import pandas as pd
 
 # Initialization - data import and initial map creation
-my_map = fl.Map(location=[65.089959, 134.153830], zoom_start=4)
+my_map = fl.Map(location=[65.089959, 134.153830], zoom_start=4, tiles='Mapbox Bright')
 vol_df = pd.read_csv('Data/volcanoes_rus_clear.csv')
 
 # World active volcanoes list import and data prep to same format
@@ -57,9 +57,12 @@ for i, row in vol_df_a.iterrows():
 
 
 
+fgv.add_child(fl.GeoJson(data=open('Data/world.json', 'r', encoding='utf-8-sig').read(),
+                         style_function= lambda x: {'fillColor':'green' if x['properties']['POP2005'] < 50000000 else
+                                                    'orange' if x['properties']['POP2005'] < 150000000 else 'red'}))
 
+# Adding groups to the map and saving the map
 
-# Adding group to the map and saving the map
 my_map.add_child(fgv)
 my_map.add_child(fga)
-my_map.save('Results/Map4.html')
+my_map.save('Results/Map5.html')
