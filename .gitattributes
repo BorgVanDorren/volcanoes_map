@@ -1,0 +1,2 @@
+# Fixing language detection in project with defining results files as Python
+*.html linguist-language=Python
