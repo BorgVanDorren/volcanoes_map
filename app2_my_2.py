@@ -48,11 +48,15 @@ for i, row in vol_df.iterrows():
                                   color=color_selector(row['height']), radius=6, weight=1,
                                   fill=True, fill_opacity=0.8))
 
+
 for i, row in vol_df_a.iterrows():
 
     iframe = fl.IFrame(html=html % (row['name'], row['name'], row['height']), width=150, height=80)
     fga.add_child(fl.Marker(location=[row['lat'], row['lon']], popup=fl.Popup(iframe),
                             icon=fl.Icon(color=color_selector(row['height']))))
+
+
+
 
 
 # Adding group to the map and saving the map
