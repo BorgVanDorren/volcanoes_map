@@ -3,7 +3,7 @@ import pandas as pd
 
 # Initialization - data import and initial map creation
 my_map = fl.Map(location=[65.089959, 134.153830], zoom_start=4)
-vol_df = pd.read_csv('volcanoes_rus_clear.csv')
+vol_df = pd.read_csv('Data/volcanoes_rus_clear.csv')
 
 lat = list(vol_df['lat'])
 lon = list(vol_df['lon'])
@@ -34,4 +34,4 @@ for n, lt, ln, el in zip(name, lat, lon, elev):
 
 # Adding group to the map and saving the map
 my_map.add_child(fgv)
-my_map.save('Map1.html')
+my_map.save('Rasults/Map1.html')

@@ -3,11 +3,11 @@ import pandas as pd
 
 # Initialization - data import and initial map creation
 my_map = fl.Map(location=[65.089959, 134.153830], zoom_start=4)
-vol_df = pd.read_csv('volcanoes_rus_clear.csv')
+vol_df = pd.read_csv('Data/volcanoes_rus_clear.csv')
 
 # World active volcanoes list import and data prep to same format
 # NB: All records with errors were dropped
-vol_df_a = pd.read_csv('volcanoes_world_active.csv')
+vol_df_a = pd.read_csv('Data/volcanoes_world_active.csv')
 vol_df_a = vol_df_a.drop(['Country', 'Type'], 1)
 vol_df_a.columns = ['name', 'lat', 'lon', 'height']
 vol_df_a['lat'] = pd.to_numeric(vol_df_a['lat'], errors='coerse')
@@ -62,4 +62,4 @@ for i, row in vol_df_a.iterrows():
 # Adding group to the map and saving the map
 my_map.add_child(fgv)
 my_map.add_child(fga)
-my_map.save('Map4.html')
+my_map.save('Results/Map4.html')
